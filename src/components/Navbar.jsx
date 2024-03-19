@@ -1,58 +1,21 @@
 import React from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate} from 'react-router-dom'
 
 const Navbar = () => {
-  
-    const navs = [
-        {
-            nav: "Home",
-            link: "/"
-        },
-        {
-            nav: "All Blogs",
-            link: "/allBlogs"
-        },
-        {
-            nav: "Add Blogs",
-            link: "/addBlog"
-        },
-        {
-            nav: "Resources",
-            link: "/resources"
-        },
-        {
-            nav: "Contact",
-            link: "/contact"
-        },
-
-    ]
 
     const navigate = useNavigate();
-
     return (
-    <div>
-        <div className='w-[100%] h-20 flex items-center justify-between text-black'>
-        <div className="logo mx-4">
-            <img src="#" alt="logo" />
+        <div>
+            <div className='w-[100vw] h-20 flex bg-slate-500 items-center text-slate-300 justify-between'>
+                <div className="logo mx-4 w-[38px] overflow-hidden hover:w-[30%] transition-all duration-300 ease-in-out ml-[20vw]">
+                    <h1 className='text-[60px] tracking-wider font-bold cursor-pointer' onClick={()=> {
+                        navigate('/')
+                    }}>SOUMYA</h1>
+                </div>
+            </div>
+            <Outlet />
         </div>
-        <div className="navigations flex gap-3 mx-4">
-            {
-                navs.map((nv)=>{
-                    return(
-                        <div className='text-black cursor-pointer'
-                        onClick={()=> {
-                            navigate(nv.link)
-                        }}
-                        >{nv.nav}</div>
-                    )
-                })
-            }
-        </div>
-        
-    </div>
-    <Outlet />
-    </div>
-  )
+    )
 }
 
 export default Navbar
